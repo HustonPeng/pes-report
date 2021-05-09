@@ -27,7 +27,8 @@ public class PesPptTemplateUtil {
    * @param textMap      The data map.
    * @throws IOException
    */
-  public static void replaceTextAndWrite(String templatePath, String outputPath, Map<String, String> textMap)
+  public static void replaceTextAndWrite(String templatePath, String outputPath,
+                                         Map<String, String> textMap)
       throws IOException {
 
     try (var fileInput = new FileInputStream(templatePath);
@@ -61,7 +62,7 @@ public class PesPptTemplateUtil {
       }
 
       List<TextRun> textRuns = textParagraph.getTextRuns();
-      if (textRuns == null || textRuns.size() <= 0 || textRuns.isEmpty()) {
+      if (CollectionUtils.isEmpty(textRuns)) {
         continue;
       }
 

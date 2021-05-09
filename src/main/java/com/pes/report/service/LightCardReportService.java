@@ -6,8 +6,6 @@ import com.alibaba.excel.util.DateUtils;
 import com.pes.report.CliParameters;
 import com.pes.report.model.LightCardModel;
 import com.pes.report.util.PesPptTemplateUtil;
-import com.spire.presentation.FileFormat;
-import com.spire.presentation.Presentation;
 import java.io.FileInputStream;
 import java.util.Date;
 import java.util.List;
@@ -54,10 +52,10 @@ public class LightCardReportService extends BaseReportService<LightCardModel> {
   public void print() {
 
     try {
-      Presentation presentation = new Presentation();
-      presentation.loadFromFile(pptPath);
-      presentation.saveToFile(getGeneratePdf(), FileFormat.PDF);
-      presentation.dispose();
+//      Presentation presentation = new Presentation();
+//      presentation.loadFromFile(pptPath);
+//      presentation.saveToFile(getGeneratePdf(), FileFormat.PDF);
+//      presentation.dispose();
     } catch (Exception ex) {
       ex.printStackTrace();
     }
@@ -65,11 +63,11 @@ public class LightCardReportService extends BaseReportService<LightCardModel> {
 
   private String getGeneratePdf() {
     return cliParameters.getOutputDirectory() +
-        "LightCard-" + DateUtils.format(new Date(), DateUtils.DATE_FORMAT_19) + ".pdf";
+        "LightCard-" + DateUtils.format(new Date(), DateUtils.DATE_FORMAT_10) + ".pdf";
   }
 
   private String getGeneratePpt() {
     return cliParameters.getOutputDirectory() +
-        "LightCard-" + DateUtils.format(new Date(), DateUtils.DATE_FORMAT_19) + ".pptx";
+        "LightCard-" + DateUtils.format(new Date(), DateUtils.DATE_FORMAT_10) + ".pptx";
   }
 }
