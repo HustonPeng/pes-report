@@ -1,6 +1,6 @@
 package com.pes.report.service;
 
-import com.pes.report.CliParameters;
+import com.pes.report.params.CliParameters;
 import lombok.var;
 
 /**

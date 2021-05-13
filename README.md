@@ -1,17 +1,43 @@
 # Pes-Report Tool
 
-## How to use?
+## Overview
 
-* Install. Java8, Maven
-* Prepare Execl: Two columns + One Sheet.
-  One is name, another is receipt no.
-* Execute: 
+### Features
+
+* Light card print.
+* Sp group pdf to excel.
+
+### Env
+
+* JDK8
+
+### Release Notes
+
 ```shell
+# v1.1.0
+java -jar ${reportType:light_card} ${excelPath} ${templatePath} ${outputDir}
+java -jar ${reportType:sp_pdf} ${pdfDir} ${outExcelDir}
+
+# v1.0.0
 java -jar ./pesReport.jar ${excelPath} ${templatePath} ${outputDir}
+
 ```
 
-## Limitation
+## Light card print
 
-* Generate a template only once.
-* Should 33 names for lighting cards.
+* excel: Only one sheet and two columns allowed, first row is header, 33 rows data included.
+* print a page once a time.
 
+How to run?
+
+* edit the 01LightCard.bat
+* replace ./NameToPrint.xlsx to the real path
+* run.
+
+## Sp group
+
+How to run?
+
+* edit the 02SpGroup.bat
+* copy pdfs to ./pdfs directory
+* run.
