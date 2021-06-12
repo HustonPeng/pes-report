@@ -1,9 +1,10 @@
 package com.pes.report;
 
+import com.pes.report.enums.ReportType;
 import com.pes.report.params.CliParameters;
 import com.pes.report.params.CliSpGroupParams;
 import com.pes.report.service.LightCardReportService;
-import com.pes.report.service.ReportService;
+import com.pes.report.service.SmallCardReportService;
 import com.pes.report.service.SpGroupService;
 import java.io.IOException;
 import lombok.var;
@@ -17,13 +18,14 @@ public class Main {
 
   public static void main(String[] args) throws IOException {
 
-    System.out
-        .println("format: ${reportType:light_card} ${excelPath} ${templatePath} ${outputDir}");
+    System.out.println("format: ${reportType:light_card} ${excelPath} ${templateDir} ${outputDir}");
+    System.out.println("format: ${reportType:small_card} ${excelPath} ${templateDir} ${outputDir}");
+
     System.out.println("format: ${reportType:sp_pdf} ${pdfDir} ${outExcelDir}");
 
-    var type = args[0];
+    ReportType type = ReportType.valueOf(args[0].toUpperCase());
 
-    if ("light_card".equals(type)) {
+    if (ReportType.LIGHT_CARD.equals(type)) {
       com.pes.report.params.CliParameters cliParameters = new CliParameters();
 
       cliParameters.setExcelPath(args[1]);
@@ -32,9 +34,9 @@ public class Main {
 
       System.out.println(cliParameters);
 
-      ReportService<?> reportService = new LightCardReportService(cliParameters);
-      reportService.run();
-    } else if ("sp_pdf".equals(type)) {
+      LightCardReportService reportService = new LightCardReportService(cliParameters);
+      reportService.runBatch();
+    } else if (ReportType.SP_PDF.equals(type)) {
 
       /*
       args = new String[3];
@@ -48,6 +50,18 @@ public class Main {
       CliSpGroupParams cliSpGroupParams = new CliSpGroupParams(pdfDir, outExcelDir);
 
       new SpGroupService(cliSpGroupParams).run();
+    } else if (ReportType.SMALL_CARD.equals(type)) {
+
+      com.pes.report.params.CliParameters cliParameters = new CliParameters();
+
+      cliParameters.setExcelPath(args[1]);
+      cliParameters.setTemplatePath(args[2]);
+      cliParameters.setOutputDirectory(args[3]);
+
+      System.out.println(cliParameters);
+
+      SmallCardReportService reportService = new SmallCardReportService(cliParameters);
+      reportService.runBatch();
     }
   }
 }

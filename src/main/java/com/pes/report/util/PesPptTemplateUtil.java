@@ -81,6 +81,9 @@ public class PesPptTemplateUtil {
 
         if (textMap.containsKey(key)) {
           String value = textMap.get(key);
+          if (value == null) {
+            value = "";
+          }
           textRun.setText(rawText.replace(key, value));
         }
       }

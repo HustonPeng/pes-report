@@ -26,13 +26,16 @@ public class LightCardModel {
   @ExcelProperty(index = 1)
   private String receiptNo;
 
-  public static Map<String, String> toTextMap(List<LightCardModel> lightCardModelList) {
+  public static Map<String, String> toTextMap(List<LightCardModel> lightCardModelList, int pageSize) {
 
     Map<String, String> textMap = new HashMap<>(lightCardModelList.size());
 
-    for (int i = 0; i < lightCardModelList.size(); i++) {
-      textMap.put("$name" + (i + 1), lightCardModelList.get(i).getName());
-      textMap.put("$recNo" + (i + 1), lightCardModelList.get(i).getReceiptNo());
+    for (int i = 0; i < pageSize; i++) {
+
+      boolean hasValue = i < lightCardModelList.size();
+
+      textMap.put("$name" + (i + 1), hasValue ? lightCardModelList.get(i).getName() : "");
+      textMap.put("$recNo" + (i + 1), hasValue ? lightCardModelList.get(i).getReceiptNo() : "");
     }
 
     return textMap;
