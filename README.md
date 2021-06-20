@@ -6,6 +6,7 @@
 
 * Light card print.
 * Sp group pdf to excel.
+* Small card print. 
 
 ### Env
 
@@ -14,6 +15,12 @@
 ### Release Notes
 
 ```shell
+# v1.2.0
+java -jar ./pesReport-v1.2.0.jar
+format: ${reportType:light_card} ${excelPath} ${templatePath} ${outputDir}
+format: ${reportType:small_card} ${excelPath} ${templatePath} ${outputDir}
+format: ${reportType:sp_pdf} ${pdfDir} ${outExcelDir}
+
 # v1.1.0
 java -jar ${reportType:light_card} ${excelPath} ${templatePath} ${outputDir}
 java -jar ${reportType:sp_pdf} ${pdfDir} ${outExcelDir}
@@ -22,22 +29,12 @@ java -jar ${reportType:sp_pdf} ${pdfDir} ${outExcelDir}
 java -jar ./pesReport.jar ${excelPath} ${templatePath} ${outputDir}
 
 ```
+### Template Name
 
-## Light card print
-
-* excel: Only one sheet and two columns allowed, first row is header, 33 rows data included.
-* print a page once a time.
-
-How to run?
-
-* edit the 01LightCard.bat
-* replace ./NameToPrint.xlsx to the real path
-* run.
-
-## Sp group
-
-How to run?
-
-* edit the 02SpGroup.bat
-* copy pdfs to ./pdfs directory
-* run.
+* light card: LightCard.pptx
+* Small Card: 
+ * SmallCard_Lidaizuxian.pptx
+ * SmallCard_Shifangwuzhuguhun.pptx
+ * SmallCard_Wangshenglianwei.pptx
+ * SmallCard_Yingling.pptx
+ * SmallCard_Yuanqinzhaizhuguhun.pptx
