@@ -1,0 +1,11 @@
+version: '2'
+services:
+  mysql-database:
+    image: mysql
+    ports:
+      - "3306:3306"
+    container_name: pes_db
+    environment:
+      MYSQL_DATABASE: pes_db
+      MYSQL_USER: pes_admin
+      MYSQL_ROOT_PASSWORD: Pes_123456

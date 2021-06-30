@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pes.reportrest.mapper.ReceiptTabMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pes.reportrest.entity.ReceiptTab">
+        <result column="id" property="id"/>
+        <result column="receipt_no" property="receiptNo"/>
+        <result column="book_no" property="bookNo"/>
+        <result column="person" property="person"/>
+        <result column="phone" property="phone"/>
+        <result column="payment_type" property="paymentType"/>
+        <result column="payment_no" property="paymentNo"/>
+        <result column="amount" property="amount"/>
+        <result column="input_date" property="inputDate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        receipt_no, book_no, person, phone, payment_type, payment_no, amount, input_date
+    </sql>
+    <select id="getAllByReceiptNoAndBookNoAndPhone" resultType="com.pes.reportrest.entity.ReceiptTab">
+        select * from receipt_tab
+        <where>
+            <if test="receiptNo != null and receiptNo !=''">
+                and receipt_no like #{receiptNo}
+            </if>
+            <if test="bookNo != null and bookNo !=''">
+                and book_no = #{bookNo}
+            </if>
+            <if test="approval != null">
+                and approval = #{approval}
+            </if>
+        </where>
+        order by receipt_no
+    </select>
+    <select id="getFullItemList" resultType="com.pes.reportrest.dto.FullItemDto">
+        select main.book_no, main.person, main.person, main.input_date as date,
+        main.payment_no, main.payment_type, main.amount,
+        item.*
+        from receipt_tab main
+        inner join receipt_item_tab item on main.receipt_no = item.receipt_no
+        <where>
+            <if test="receiptNo != null and receiptNo !=''">
+                and main.receipt_no = #{receiptNo}
+            </if>
+            <if test="approval != null">
+                and main.approval = #{approval}
+            </if>
+            <if test="printed != null">
+                and item.printed = #{printed}
+            </if>
+        </where>
+        order by main.book_no desc, main.receipt_no desc
+    </select>
+
+</mapper>

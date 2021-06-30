@@ -2,39 +2,43 @@
 
 ## Overview
 
-### Features
+## Features
 
 * Light card print.
 * Sp group pdf to excel.
-* Small card print. 
+* Small card print.
+* web site.
 
-### Env
+## Env
 
-* JDK8
+* Spring Boot 2.X + JDK 8
+* Antd pro
 
-### Release Notes
+## Release Notes
 
+### v2.0.0
+
+1. jar + application
+2. templates, uploads, outputs
+3. bat file.
+
+### v1.2.0
 ```shell
-# v1.2.0
 java -jar ./pesReport-v1.2.0.jar
 format: ${reportType:light_card} ${excelPath} ${templatePath} ${outputDir}
 format: ${reportType:small_card} ${excelPath} ${templatePath} ${outputDir}
 format: ${reportType:sp_pdf} ${pdfDir} ${outExcelDir}
 
-# v1.1.0
+```
+### v.1.1.0
+
+```shell
 java -jar ${reportType:light_card} ${excelPath} ${templatePath} ${outputDir}
 java -jar ${reportType:sp_pdf} ${pdfDir} ${outExcelDir}
-
-# v1.0.0
-java -jar ./pesReport.jar ${excelPath} ${templatePath} ${outputDir}
-
 ```
-### Template Name
 
-* light card: LightCard.pptx
-* Small Card: 
- * SmallCard_Lidaizuxian.pptx
- * SmallCard_Shifangwuzhuguhun.pptx
- * SmallCard_Wangshenglianwei.pptx
- * SmallCard_Yingling.pptx
- * SmallCard_Yuanqinzhaizhuguhun.pptx
+### v.1.0。0
+
+```shell
+java -jar ./pesReport.jar ${excelPath} ${templatePath} ${outputDir}
+```
