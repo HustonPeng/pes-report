@@ -1,27 +1,3 @@
-dist
-target
-*.iml
-*.ipr
-*.iws
-*.tar.gz
-*.swp
-*.swo
-.classpath
-.idea
-.project
-.PVS-Studio
-.settings/
-.vscode
-*.log
-*.DS_Store
-_site
-dependency-reduced-pom.xml
-LICENSE.BINARY
-NOTICE.BINARY
-README.BINARY
-README
-
-
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -30,10 +6,18 @@ target/
 
 ### STS ###
 .apt_generated
+.classpath
 .factorypath
+.project
 .settings
 .springBeans
 .sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
 
 ### NetBeans ###
 /nbproject/private/
@@ -47,7 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-outputs
-uploads
-static

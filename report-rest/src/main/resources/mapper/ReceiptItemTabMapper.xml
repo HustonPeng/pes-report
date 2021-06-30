@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pes.reportrest.mapper.ReceiptItemTabMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pes.reportrest.entity.ReceiptItemTab">
+        <result column="id" property="id"/>
+        <result column="receipt_no" property="receiptNo"/>
+        <result column="item_type" property="itemType"/>
+        <result column="live_name" property="liveName"/>
+        <result column="family_name" property="familyName"/>
+        <result column="relation" property="relation"/>
+        <result column="relation_name" property="relationName"/>
+        <result column="yl_family_name" property="ylFamilyName"/>
+        <result column="yl_type" property="ylType"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        receipt_no, item_type, live_name, family_name, relation, relation_name, yl_family_name, yl_type
+    </sql>
+    <update id="printed">
+        update receipt_item_tab
+        set printed = #{printed}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteByReceiptNo">
+        delete
+        from receipt_item_tab
+        where receipt_no = #{receiptNo}
+    </delete>
+
+</mapper>
